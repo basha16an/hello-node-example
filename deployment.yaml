@@ -23,6 +23,8 @@ spec:
       labels:
         app: node-app
     spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
       containers:
       - name: node-app
         image: node-app:${CICD_EXECUTION_SEQUENCE}
