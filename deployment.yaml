@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        image: node-app:${CICD_EXECUTION_SEQUENCE}
         resources:
           limits:
             memory: "128Mi"
