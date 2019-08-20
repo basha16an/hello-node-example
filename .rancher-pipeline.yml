@@ -4,7 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+      tag: test:v1
       registry: 127.0.0.1:34200
 - name: publish
   steps:
