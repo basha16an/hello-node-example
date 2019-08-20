@@ -4,7 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: test:v1
+      tag: example-helloserver:${CICD_EXECUTION_SEQUENCE}
 - name: publish
   steps:
   - applyYamlConfig:
