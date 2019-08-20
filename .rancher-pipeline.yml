@@ -4,8 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: test:${CICD_EXECUTION_SEQUENCE}
-      registry: 127.0.0.1:34200
+      tag: test:v1
 - name: publish
   steps:
   - applyYamlConfig:
