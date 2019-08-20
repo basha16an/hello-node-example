@@ -1,13 +1,16 @@
+    
 stages:
-- name: build
+- name: Build
+  steps:
+  - runScriptConfig:
+      image: node:latest
+- name: Publish
   steps:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: example-helloserver:${CICD_EXECUTION_SEQUENCE}
-- name: publish
+- name: Deploy
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
-timeout: 60
-notification: {}
