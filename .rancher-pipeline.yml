@@ -5,6 +5,7 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: test:v1
+      pushRemote: true
       registry: 127.0.0.1:34200
 - name: publish
   steps:
