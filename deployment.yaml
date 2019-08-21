@@ -1,36 +1,36 @@
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  name: node-app
+  name: node-helloserver-service
 spec:
   selector:
-    app: node-app
-  ports:
-  - port: 8080
-    targetPort: 8080
+    app: node-helloserver
   type: LoadBalancer
---- 
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-app
+  name: node-helloserver
+  labels:
+    app: node-helloserver
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: node-app 
+      app: node-helloserver
   template:
     metadata:
       labels:
-        app: node-app
+        app: node-helloserver
     spec:
       imagePullSecrets:
       - name: pipeline-docker-registry
       containers:
-      - name: node-app
-        image: node-app:${CICD_EXECUTION_SEQUENCE}
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+      - name: node-helloserver
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         ports:
-        - containerPort: 8080 
+        - containerPort: 8080
